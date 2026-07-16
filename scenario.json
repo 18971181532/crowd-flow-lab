@@ -1,0 +1,53 @@
+{
+  "name": "Harbor Concourse Drill",
+  "description": "A deterministic evacuation drill for a divided transport concourse with two exits, three mobility groups, queue-sensitive routing, and a slowly expanding smoke source.",
+  "map": [
+    "########################",
+    "#S.....#..........E....#",
+    "#......#...............#",
+    "#......#..#####........#",
+    "#.........#............#",
+    "#..####...#..#####.....#",
+    "#.........#............#",
+    "#....H....#............#",
+    "#.........#####........#",
+    "#.....................E#",
+    "#S.....................#",
+    "########################"
+  ],
+  "exits": [
+    {"name": "North Gate", "position": [18, 1], "capacity": 1},
+    {"name": "East Ramp", "position": [22, 9], "capacity": 2}
+  ],
+  "spawn_groups": [
+    {
+      "name": "north-lobby",
+      "count": 6,
+      "cells": [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1]],
+      "mobility": 1.0,
+      "reaction_delay": [0, 2]
+    },
+    {
+      "name": "south-platform",
+      "count": 6,
+      "cells": [[1, 10], [2, 10], [3, 10], [4, 10], [5, 10], [6, 10]],
+      "mobility": 0.88,
+      "reaction_delay": [1, 4]
+    },
+    {
+      "name": "central-cafe",
+      "count": 5,
+      "cells": [[2, 4], [3, 4], [4, 4], [5, 4], [6, 4]],
+      "mobility": 0.76,
+      "reaction_delay": [2, 6]
+    }
+  ],
+  "simulation": {
+    "max_steps": 180,
+    "reroute_interval": 5,
+    "congestion_weight": 1.8,
+    "hazard_weight": 18.0,
+    "hazard_growth_interval": 8,
+    "hazard_max_radius": 3
+  }
+}
